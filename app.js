@@ -1,19 +1,69 @@
-angular.module('todoApp', ['LocalStorageModule'])
-.controller('TodoListController', function(localStorageService) {
-  var todoList = this;
+(function() {
+  var app = angular.module('myApp', ['ui.router']);
+  
+  app.run(function($rootScope, $location, $state, LoginService) {
+    $rootScope.$on('$stateChangeStart', 
+      function(event, toState, toParams, fromState, fromParams){ 
+          console.log('Changed state to: ' + toState);
+      });
+    
+      if(!LoginService.isAuthenticated()) {
+        $state.transitionTo('login');
+      }
+  });
+  
+  app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/home');
+    
+    $stateProvider
+      .state('login', {
+        url : '/login',
+        templateUrl : 'login.html',
+        controller : 'LoginController'
+      })
+      .state('home', {
+        url : '/home',
+        templateUrl : 'home.html',
+        controller : 'HomeController'
+      });
+  }]);
 
-  // todoList.todos = [
-  //   {text:'learn angular', done:true},
-  //   {text:'build an angular app', done:false}];
-
-  var todosInStore = localStorageService.get('myTodos');
-
-  todoList.todos = todosInStore || [];
-  todoList.addTodo = function() {
-    todoList.todos.push({text:todoList.todoText, done:false});
-    localStorageService.set('myTodos', todoList.todos);
-    todoList.todoText = '';
-  };
-
-  [...]
-});
+  app.controller('LoginController', function($scope, $rootScope, $stateParams, $state, LoginService) {
+    $rootScope.title = "AngularJS Login Sample";
+    
+    $scope.formSubmit = function() {
+      if(LoginService.login($scope.username, $scope.password)) {
+        $scope.error = '';
+        $scope.username = '';
+        $scope.password = '';
+        $state.transitionTo('home');
+      } else {
+        $scope.error = "Incorrect username/password !";
+      }   
+    };
+    
+  });
+  
+  app.controller('HomeController', function($scope, $rootScope, $stateParams, $state, LoginService) {
+    $rootScope.title = "AngularJS Login Sample";
+    
+  });
+  
+  app.factory('LoginService', function() {
+    var admin = 'admin';
+    var pass = 'pass';
+    var isAuthenticated = false;
+    
+    return {
+      login : function(username, password) {
+        isAuthenticated = username === admin && password === pass;
+        return isAuthenticated;
+      },
+      isAuthenticated : function() {
+        return isAuthenticated;
+      }
+    };
+    
+  });
+  
+})();
