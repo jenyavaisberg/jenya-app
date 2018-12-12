@@ -3,14 +3,13 @@ var myApp = angular.module('myApp', ['ngRoute']);
 myApp.config(['$routeProvider', function ($routeProvider) {
   $routeProvider
   .when ('/homepage', {
-    templateURL:'views/homepage.html'
+    templateUrl:'views/homepage.html'
     })
 
   .when ('/rooms', {
-      templateURL:'views/rooms.html',
-      controller: 'RoomsController'
+      templateUrl:'views/rooms.html',
+        controller: 'RoomsController'
     })
-
   .otherwise ({redirectTo:'/homepage'});
 
 }]);
@@ -31,8 +30,7 @@ $scope.addRoom=function(){
    $scope.newroom.size="";
    $scope.newroom.type="";
    available:true
-}
-;
+};
 
 $http.get('data/rooms.json').success(function(data){
   $scope.rooms=data;
