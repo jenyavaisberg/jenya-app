@@ -1,26 +1,21 @@
 <!DOCTYPE html>.
-<html lang="he">
-  <head>
+<html lang="he" ng-app="myApp">
+  <link href="./style.css" type="text/css" rel="stylesheet">
+  <script src="scripts\angular.min.js"></script>
+  <script src="scripts\angular-route.min.js"></script>
+  <script src="scripts\myapp.js"></script>
+   <head>
     <meta charset="utf-8">
-    <title>מכללת עתיד מעכרת לניהול כיתות</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
-    <script src ="angular-route.min.js"></script>
-    <script src="maincontroller.js"></script>
-  </head>  
-    <body ng-app=mainApp>
-     <div ng-view></div>  
-    </body>
-</html>
- 
-  <div ng-view></div>
-  
-</div>
-</div>
 
-</div> 
-</div>
-<script src="file:///c:/Users/User/Desktop/project/js/js.js"></script>
-</body>
-    </script>
-  </div>
+     <title>מכללת עתיד מעכרת לניהול כיתות</title>
+   </head>
+    <body>
+      <header ng-include="'header.html'"></header>
+      <header ng-include="'menu.html'"></header>
+      <div ng-view class="content"></div>
+
+
+     <footer ng-include="'footer.html'"></footer>
+     <div>
+    </body>
 </html>

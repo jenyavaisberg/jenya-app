@@ -1,7 +1,7 @@
 
 <div class="panel-heading">כניסה למערכת <br/><br/>
   <link href="./style.css" type="text/css" rel="stylesheet">
-    <div class="form" ng-controller="loginCtrl">
+    <div class="form" ng-controller="LoginController">
       <form action ="/" id=my-form name="myForm" action="form-handler" onsubmit="return checkForm(false,true);">
        <input type="text" ng-model="yourName" id="name" name="name" placeholder="תקלידו שם המלא" required>
        <label for="name">מנהל </label><br/><br/>
@@ -11,16 +11,16 @@
        <label for="password">סיסמא</label><br/><br/>
        <input list="branches" ng-model="branches" id="branch" name="branch" placeholder="תבחרו שלוחה" required>
        <label for="branch">מכללה</label> <br/><br/>
-        <datalist id="branches" name="branches"> 
+        <datalist id="branches" name="branches">
               <option value="אשקלון">אשקלון</option>
               <option value="ירושלים">ירושלים</option>
               <option value="חולון">חולון</option>
-        </datalist><br/>                  
-<button class="btn btn-primary" id="submitBtn" name="submit" ng-click="submit ()">Login</button> 
+        </datalist><br/>
+<button class="btn btn-primary" id="submitBtn" name="submit" ng-click="submit ()">Login</button>
  <a href="file:///C:/Users/User/Desktop/project2/index2.html" id="mylink">כניסה</a></button>
  <br><br/>
  <button class="btn btn-primary" id="submitBtn">
-  <a href="mailto:genyav@atid.org.il">מייל להרשמה  ושאלות</a>  
+  <a href="mailto:genyav@atid.org.il">מייל להרשמה  ושאלות</a>
   </button>
   </div>
   </form>

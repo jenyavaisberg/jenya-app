@@ -1,0 +1,17 @@
+<div class="content">
+
+ <button ng-click="order='size'">מיון לפי גודל</button>
+ <button ng-click="order='type'">מיון לפי סוג</button>
+ <input type="text" ng-model="search"
+ <ul>
+   <li id="rooms" ng-repeat="room in rooms | orderBy: order| filter: search" ng-show="room.available">
+       <h3>{{room.name}} (גודל הכיתה- {{room.size}})    {{room.type}}   <div class="remove" ng-click="removeRoom(room)">X</div> <h3>
+  </li>
+ </ul>
+ <form ng-submit="addRoom()">
+   <input type="text" placeholder="מספר כיתה" ng-model="newroom.name"/>
+   <input type="text" placeholder="גודל" ng-model="newroom.size"/>
+   <input type="text" placeholder="סוג" ng-model="newroom.type"/>
+   <input type="submit" value="להוסיף כיתה חדשה">
+ </form>
+ </div>
