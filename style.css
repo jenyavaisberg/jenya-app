@@ -66,3 +66,21 @@ list-style:none;}
 
   #rooms {color: #110652;font-family: david; font-size:16px;border-bottom: 1px solid transparent; border-color: #110652;padding:1px}
   .remove {display:flex;justify-content:flex-end;color:red; font-size:8px}
+
+
+
+.slide.ng-animate {
+  transition:0.5s linear all;
+}
+.slide.ng-enter {
+  opacity:0;
+}
+.slide.ng-enter.ng-enter-active {
+  opacity:1;
+}
+.slide.ng-leave {
+  opacity:1;
+}
+.slide.ng-leave.ng-leave-active {
+  opacity:0;
+}

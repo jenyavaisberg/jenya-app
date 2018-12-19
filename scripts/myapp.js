@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ngRoute','ngAnimate']);
 
 myApp.config(['$routeProvider', function ($routeProvider) {
   $routeProvider
@@ -31,8 +31,11 @@ $scope.addRoom=function(){
    $scope.newroom.type="";
    available:true
 };
+//dataRooms
+$http.get('data/rooms.json').then(
 
-$http.get('data/rooms.json').success(function(data){
-  $scope.rooms=data;
+function (response){
+  $scope.rooms=response.data;
 });
+
 }]);

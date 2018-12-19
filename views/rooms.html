@@ -5,7 +5,7 @@
  <input type="text" ng-model="search"/>
  <ul>
    <li id="rooms" ng-repeat="room in rooms | orderBy: order| filter: search" ng-show="room.available">
-       <h3>{{room.name}} (גודל הכיתה- {{room.size}})    {{room.type}}   <div class="remove" ng-click="removeRoom(room)">X</div> <h3>
+       <h3>{{room.name}} (גודל הכיתה- {{room.size}})    {{room.type}}   <div class="remove" ng-click="removeRoom(room)">X</div> </h3>
   </li>
  </ul>
  <form ng-submit="addRoom()">
